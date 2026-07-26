@@ -1,0 +1,7 @@
+/* SPDX-License-Identifier: Apache-2.0 */
+
+#include <m68k/m68k.dtsi>
+
+&cpu0 {
+	compatible = "motorola,m68000";
+};
