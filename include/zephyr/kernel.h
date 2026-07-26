@@ -2377,7 +2377,7 @@ struct k_queue {
 /**
  * @cond INTERNAL_HIDDEN
  */
-	sys_sflist_t data_q;
+	sys_slist_t data_q;
 	struct k_spinlock lock;
 	_wait_q_t wait_q;
 
@@ -2394,7 +2394,7 @@ struct k_queue {
  */
 #define Z_QUEUE_INITIALIZER(obj) \
 	{ \
-	.data_q = SYS_SFLIST_STATIC_INIT(&obj.data_q), \
+	.data_q = SYS_SLIST_STATIC_INIT(&obj.data_q), \
 	.lock = { }, \
 	.wait_q = Z_WAIT_Q_INIT(&obj.wait_q),	\
 	Z_POLL_EVENT_OBJ_INIT(obj)		\
@@ -2619,7 +2619,7 @@ __syscall int k_queue_is_empty(struct k_queue *queue);
 
 static inline int z_impl_k_queue_is_empty(struct k_queue *queue)
 {
-	return sys_sflist_is_empty(&queue->data_q) ? 1 : 0;
+	return sys_slist_is_empty(&queue->data_q) ? 1 : 0;
 }
 
 /**
