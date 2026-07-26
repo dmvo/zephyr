@@ -40,7 +40,7 @@ extern "C" {
 /** @cond INTERNAL_HIDDEN */
 struct _sfnode {
 	uintptr_t next_and_flags;
-};
+} __aligned(4);
 /** @endcond */
 
 /** Flagged single-linked list node structure. */
